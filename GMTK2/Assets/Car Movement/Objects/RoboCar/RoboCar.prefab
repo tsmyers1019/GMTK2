@@ -9,47 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1758612883359302}
+  m_RootGameObject: {fileID: 1012414312079054}
   m_IsPrefabAsset: 1
---- !u!1 &1758612883359302
+--- !u!1 &1012414312079054
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4214398687099076}
-  - component: {fileID: 33276664297907186}
-  - component: {fileID: 23191433026902620}
-  - component: {fileID: 65345212916215430}
-  - component: {fileID: 114601673838524794}
-  - component: {fileID: 54220724022597234}
+  - component: {fileID: 4203512381402372}
+  - component: {fileID: 33020450861260488}
+  - component: {fileID: 23984120624186378}
+  - component: {fileID: 65675700808297086}
+  - component: {fileID: 114938879613621850}
+  - component: {fileID: 54344364444815694}
   m_Layer: 0
-  m_Name: Car
+  m_Name: RoboCar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4214398687099076
+--- !u!4 &4203512381402372
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1758612883359302}
+  m_GameObject: {fileID: 1012414312079054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalPosition: {x: 13.3, y: 0.75, z: 0}
   m_LocalScale: {x: 4.5, y: 1.5, z: 8}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23191433026902620
+--- !u!23 &23984120624186378
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1758612883359302}
+  m_GameObject: {fileID: 1012414312079054}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,7 +59,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 10b822a6c71210a448b63fad22f277d5, type: 2}
+  - {fileID: 2100000, guid: 4fce309bfee11c74aaebc1974ae0f13b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,57 +79,57 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33276664297907186
+--- !u!33 &33020450861260488
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1758612883359302}
+  m_GameObject: {fileID: 1012414312079054}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54220724022597234
+--- !u!54 &54344364444815694
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1758612883359302}
+  m_GameObject: {fileID: 1012414312079054}
   serializedVersion: 2
   m_Mass: 1500
-  m_Drag: 0.5
+  m_Drag: 0.9
   m_AngularDrag: 5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65345212916215430
+--- !u!65 &65675700808297086
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1758612883359302}
+  m_GameObject: {fileID: 1012414312079054}
   m_Material: {fileID: 13400000, guid: 69349349a1e23a647a1588fbd9e6a67a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114601673838524794
+--- !u!114 &114938879613621850
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1758612883359302}
+  m_GameObject: {fileID: 1012414312079054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67d4a86b8f8700d48901ae6266f54cd9, type: 3}
+  m_Script: {fileID: 11500000, guid: e4959d00638194946bf56ac197d0d52f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 60000
+  maxEngineForce: 120000
+  maxReverseForce: 50000
+  engineForceDecay: 0.005
+  acceleration: 80000
   braking: 100000
   turning: 80000
-  turningVelocityMultiplier: 400
-  groundedCheckMargin: 0
-  accelerate: 119
-  brake: 115
-  turnLeft: 97
-  turnRight: 100
+  turningVelocityMultiplier: 500
+  groundedCheckMargin: 0.25
+  track: {fileID: 0}

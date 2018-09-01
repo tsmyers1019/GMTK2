@@ -5,29 +5,41 @@ using UnityEngine;
 public class Car : MonoBehaviour {
 
 	// Inspector attributes
-	public float acceleration, braking, turning, turningVelocityMultiplier;
+	public float maxEngineForce, maxReverseForce, engineForceDecay, acceleration, braking, turning, turningVelocityMultiplier, groundedCheckMargin;
 
 	// Properties
-	private Rigidbody rb;
+	protected Rigidbody rb;
 	private bool isGrounded {
 		get {
-			return Physics.Raycast(transform.position, transform.rotation * Vector3.down, transform.localScale.y / 2 + 0.01f);
+			return Physics.Raycast(transform.position, transform.rotation * Vector3.down, transform.localScale.y / 2 + groundedCheckMargin);
 		}
 	}
+	private float engineForce;
 
 	private void Start() {
 		rb = GetComponent<Rigidbody>();
 	}
 
+	private void FixedUpdate() {
+		engineForce -= engineForce * engineForceDecay;
+		engineForce = Mathf.Clamp(engineForce, -maxReverseForce, maxEngineForce);
+		rb.AddRelativeForce(Vector3.forward * engineForce);
+	}
+
+	private void OnCollisionEnter(Collision c) {
+		engineForce /= 2;
+		rb.AddForce(-c.relativeVelocity);
+	}
+
 	protected void Accelerate() {
 		if(isGrounded) {
-			rb.AddRelativeForce(Vector3.forward * acceleration);
+			engineForce += acceleration * Time.deltaTime;
 		}
 	}
 
 	protected void Brake() {
 		if(isGrounded) {
-			rb.AddRelativeForce(Vector3.back * braking);
+			engineForce -= braking * Time.deltaTime;
 		}
 	}
 
