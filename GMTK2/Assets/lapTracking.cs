@@ -6,13 +6,26 @@ public class lapTracking : MonoBehaviour {
 
 	public int lapLim;
 	public Track track;
+	public GameObject lapCounterContainer;
 
 	private Dictionary<Car, int> laps = new Dictionary<Car, int>();
+	private Dictionary<Car, LapCounter> lapCounters = new Dictionary<Car, LapCounter>();
 
-	// Register all cars as keys for the laps dictionary
 	private void Start() {
+
+		// Register all cars as keys for the laps dictionary
 		foreach(Car car in track.cars) {
 			laps.Add(car, 0);
+		}
+
+		// Register all lapCounters
+		foreach(LapCounter counter in lapCounterContainer.GetComponentsInChildren<LapCounter>()) {
+			foreach(Car car in track.cars) {
+				if(counter.car == car) {
+					lapCounters.Add(car, counter);
+					break;
+				}
+			}
 		}
 	}
 
@@ -32,6 +45,7 @@ public class lapTracking : MonoBehaviour {
 			if(getAngle(car.GetComponent<Rigidbody>()) > 0) {
 
 				laps[car]++;
+				lapCounters[car].UpdateLapCounter(laps[car]);
 
 				Debug.Log(string.Format(
 					"{0}:\t{1} / {2}",
@@ -40,7 +54,7 @@ public class lapTracking : MonoBehaviour {
 					lapLim
 				));
 
-				if(Mathf.Abs(laps[car]) == lapLim) {
+				if(Mathf.Abs(laps[car]) > lapLim) {
 					//TODO: end race
 				}
 			}
@@ -57,6 +71,7 @@ public class lapTracking : MonoBehaviour {
 			if(getAngle(car.GetComponent<Rigidbody>()) < 0) {
 
 				laps[car]--;
+				lapCounters[car].UpdateLapCounter(laps[car]);
 
 				Debug.Log(string.Format(
 					"{0}:\t{1} / {2}",
@@ -65,7 +80,7 @@ public class lapTracking : MonoBehaviour {
 					lapLim
 				));
 
-				if(Mathf.Abs(laps[car]) == lapLim) {
+				if(Mathf.Abs(laps[car]) > lapLim) {
 					//TODO: end race
 				}
 			}
