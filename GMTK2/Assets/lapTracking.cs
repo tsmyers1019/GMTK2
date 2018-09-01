@@ -15,10 +15,12 @@ public class lapTracking : MonoBehaviour {
 		StartCoroutine(registerCars());
 	}
 	private IEnumerator registerCars() {
-		yield return new WaitForEndOfFrame();
+		Debug.Log(track.cars.Length);
+		yield return new WaitForSeconds(1);
 		foreach(Car car in track.cars) {
 			laps.Add(car, 0);
 		}
+		Debug.Log(track.cars.Length);
 	}
 
 	// Return the angle between the RigidBody's velocity vector and this line
