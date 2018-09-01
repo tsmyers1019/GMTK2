@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Track : MonoBehaviour {
 
-	public Waypoint[] waypoints;
+	[HideInInspector] public Waypoint[] waypoints;
+	[HideInInspector] public Car[] cars;
 
 	private void OnDrawGizmos() {
+
+		waypoints = GetComponentsInChildren<Waypoint>();
+		cars = GetComponentsInChildren<Car>();
+
 		for(int i = 0; i < waypoints.Length; i++) {
 			int next = i + 1;
 			if(next == waypoints.Length) {
