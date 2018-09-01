@@ -5,7 +5,7 @@ using UnityEngine;
 public class Car : MonoBehaviour {
 
 	// Inspector attributes
-	public float maxEngineForce, maxReverseForce, engineForceDecay, acceleration, braking, turning, turningVelocityMultiplier, groundedCheckMargin;
+	public float maxEngineForce, maxReverseForce, engineForceDecay, acceleration, brakingMultiplier, turning, groundedCheckMargin;
 
 	// Properties
 	protected Rigidbody rb;
@@ -14,16 +14,25 @@ public class Car : MonoBehaviour {
 			return Physics.Raycast(transform.position, transform.rotation * Vector3.down, transform.localScale.y / 2 + groundedCheckMargin);
 		}
 	}
-	private float engineForce;
+	private float engineForce, turningForce;
 
 	private void Start() {
 		rb = GetComponent<Rigidbody>();
 	}
 
 	private void FixedUpdate() {
-		engineForce -= engineForce * engineForceDecay;
-		engineForce = Mathf.Clamp(engineForce, -maxReverseForce, maxEngineForce);
-		rb.AddRelativeForce(Vector3.forward * engineForce);
+
+		if(isGrounded) {
+
+			engineForce = Mathf.Clamp(engineForce, -maxReverseForce, maxEngineForce);
+			rb.AddRelativeForce(Vector3.forward * engineForce);
+			engineForce -= engineForce * engineForceDecay;
+			
+			float a = 0.5f; // this is how much turning you can do standing still
+			turningForce *= a + ((1 - a) * (Mathf.Abs(engineForce) / maxEngineForce));
+			rb.AddRelativeTorque(Vector3.up * turningForce);
+			turningForce = 0;
+		}
 	}
 
 	private void OnCollisionEnter(Collision c) {
@@ -39,19 +48,19 @@ public class Car : MonoBehaviour {
 
 	protected void Brake() {
 		if(isGrounded) {
-			engineForce -= braking * Time.deltaTime;
+			engineForce -= acceleration * brakingMultiplier * Time.deltaTime;
 		}
 	}
 
 	protected void TurnLeft() {
 		if(isGrounded) {
-			rb.AddRelativeTorque(Vector3.down * turning + Vector3.down * rb.velocity.magnitude * turningVelocityMultiplier);
+			turningForce = -turning;
 		}
 	}
 
 	protected void TurnRight() {
 		if(isGrounded) {
-			rb.AddRelativeTorque(Vector3.up * turning + Vector3.up * rb.velocity.magnitude * turningVelocityMultiplier);
+			turningForce = turning;
 		}
 	}
 }
