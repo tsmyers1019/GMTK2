@@ -10,17 +10,10 @@ public class lapTracking : MonoBehaviour {
 	private Dictionary<Car, int> laps = new Dictionary<Car, int>();
 
 	// Register all cars as keys for the laps dictionary
-	// This needs to be a coroutine because - for some reason - the first frame of the game does not count the cars correctly. (Something to do with Track.OnDrawGizmos but it's really not worth figuring out.)
 	private void Start() {
-		StartCoroutine(registerCars());
-	}
-	private IEnumerator registerCars() {
-		Debug.Log(track.cars.Length);
-		yield return new WaitForSeconds(1);
 		foreach(Car car in track.cars) {
 			laps.Add(car, 0);
 		}
-		Debug.Log(track.cars.Length);
 	}
 
 	// Return the angle between the RigidBody's velocity vector and this line
