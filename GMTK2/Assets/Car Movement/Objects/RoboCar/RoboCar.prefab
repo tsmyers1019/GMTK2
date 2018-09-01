@@ -94,7 +94,7 @@ Rigidbody:
   m_GameObject: {fileID: 1012414312079054}
   serializedVersion: 2
   m_Mass: 1500
-  m_Drag: 0.75
+  m_Drag: 0.9
   m_AngularDrag: 5
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -124,8 +124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4959d00638194946bf56ac197d0d52f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 75000
+  maxEngineForce: 120000
+  maxReverseForce: 50000
+  engineForceDecay: 0.005
+  acceleration: 80000
   braking: 100000
   turning: 80000
   turningVelocityMultiplier: 500
   groundedCheckMargin: 0.25
+  track: {fileID: 0}

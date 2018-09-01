@@ -8,7 +8,7 @@ public class Car : MonoBehaviour {
 	public float maxEngineForce, maxReverseForce, engineForceDecay, acceleration, braking, turning, turningVelocityMultiplier, groundedCheckMargin;
 
 	// Properties
-	private Rigidbody rb;
+	protected Rigidbody rb;
 	private bool isGrounded {
 		get {
 			return Physics.Raycast(transform.position, transform.rotation * Vector3.down, transform.localScale.y / 2 + groundedCheckMargin);
@@ -21,7 +21,6 @@ public class Car : MonoBehaviour {
 	}
 
 	private void FixedUpdate() {
-		Debug.Log(engineForce / maxEngineForce);
 		engineForce -= engineForce * engineForceDecay;
 		engineForce = Mathf.Clamp(engineForce, -maxReverseForce, maxEngineForce);
 		rb.AddRelativeForce(Vector3.forward * engineForce);

@@ -8,17 +8,32 @@ public class PlayerCar : Car {
 	public KeyCode accelerate, brake, turnLeft, turnRight;
 
 	private void Update() {
+
 		if(Input.GetKey(accelerate)) {
 			Accelerate();
 		}
 		if(Input.GetKey(brake)) {
 			Brake();
 		}
+
+		float angleOffset = Vector3.Angle(transform.rotation * Vector3.forward, rb.velocity.normalized);
+		bool reversing = angleOffset > 90;
+
 		if(Input.GetKey(turnLeft)) {
-			TurnLeft();
+			if(reversing) {
+				TurnRight();
+			}
+			else {
+				TurnLeft();
+			}
 		}
 		if(Input.GetKey(turnRight)) {
-			TurnRight();
+			if(reversing) {
+				TurnLeft();
+			}
+			else {
+				TurnRight();
+			}
 		}
 	}
 }
