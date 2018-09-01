@@ -16,6 +16,7 @@ public class lapTracking : MonoBehaviour {
 
 	//public GameObject line;
 
+//THESE ARE REDUNDANT
 
 	// Use this for initialization
 	void Start () {
