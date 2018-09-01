@@ -14,7 +14,7 @@ public class Car : MonoBehaviour {
 			return Physics.Raycast(transform.position, transform.rotation * Vector3.down, transform.localScale.y / 2 + groundedCheckMargin);
 		}
 	}
-	private float engineForce, turningForce;
+	[HideInInspector] public float engineForce, turningForce;
 
 	private void Start() {
 		rb = GetComponent<Rigidbody>();
