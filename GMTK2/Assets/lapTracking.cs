@@ -6,18 +6,26 @@ public class lapTracking : MonoBehaviour {
 
 	public int lapLim;
 	public Track track;
+	public GameObject lapCounterContainer;
 
 	private Dictionary<Car, int> laps = new Dictionary<Car, int>();
+	private Dictionary<Car, LapCounter> lapCounters = new Dictionary<Car, LapCounter>();
 
-	// Register all cars as keys for the laps dictionary
-	// This needs to be a coroutine because - for some reason - the first frame of the game does not count the cars correctly. (Something to do with Track.OnDrawGizmos but it's really not worth figuring out.)
 	private void Start() {
-		StartCoroutine(registerCars());
-	}
-	private IEnumerator registerCars() {
-		yield return new WaitForEndOfFrame();
+
+		// Register all cars as keys for the laps dictionary
 		foreach(Car car in track.cars) {
 			laps.Add(car, 0);
+		}
+
+		// Register all lapCounters
+		foreach(LapCounter counter in lapCounterContainer.GetComponentsInChildren<LapCounter>()) {
+			foreach(Car car in track.cars) {
+				if(counter.car == car) {
+					lapCounters.Add(car, counter);
+					break;
+				}
+			}
 		}
 	}
 
@@ -29,24 +37,21 @@ public class lapTracking : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other) {
 
-		// Check if the collider is a car
-		Car car = other.GetComponent<Car>();
-		if(car) {
+		if(track.go) {
 
-			// Add a lap for this car if it's going forward
-			if(getAngle(car.GetComponent<Rigidbody>()) > 0) {
+			// Check if the collider is a car
+			Car car = other.GetComponent<Car>();
+			if(car) {
 
-				laps[car]++;
+				// Add a lap for this car if it's going forward
+				if(getAngle(car.GetComponent<Rigidbody>()) > 0) {
 
-				Debug.Log(string.Format(
-					"{0}:\t{1} / {2}",
-					car.name,
-					laps[car],
-					lapLim
-				));
+					laps[car]++;
+					lapCounters[car].UpdateLapCounter(laps[car]);
 
-				if(Mathf.Abs(laps[car]) == lapLim) {
-					//TODO: end race
+					if(Mathf.Abs(laps[car]) > lapLim) {
+						track.RaceEnd();
+					}
 				}
 			}
 		}
@@ -54,24 +59,21 @@ public class lapTracking : MonoBehaviour {
 
 	private void OnTriggerExit(Collider other) {
 
-		// Check if the collider is a car
-		Car car = other.GetComponent<Car>();
-		if(car) {
+		if(track.go) {
 
-			// Subtract a lap for this car if it's going backward
-			if(getAngle(car.GetComponent<Rigidbody>()) < 0) {
+			// Check if the collider is a car
+			Car car = other.GetComponent<Car>();
+			if(car) {
 
-				laps[car]--;
+				// Subtract a lap for this car if it's going backward
+				if(getAngle(car.GetComponent<Rigidbody>()) < 0) {
 
-				Debug.Log(string.Format(
-					"{0}:\t{1} / {2}",
-					car.name,
-					laps[car],
-					lapLim
-				));
+					laps[car]--;
+					lapCounters[car].UpdateLapCounter(laps[car]);
 
-				if(Mathf.Abs(laps[car]) == lapLim) {
-					//TODO: end race
+					if(Mathf.Abs(laps[car]) > lapLim) {
+						track.RaceEnd();
+					}
 				}
 			}
 		}

@@ -26,13 +26,14 @@ public class Car : MonoBehaviour {
 
 			engineForce = Mathf.Clamp(engineForce, -maxReverseForce, maxEngineForce);
 			rb.AddRelativeForce(Vector3.forward * engineForce);
-			engineForce -= engineForce * engineForceDecay;
 			
 			float a = 0.5f; // this is how much turning you can do standing still
 			turningForce *= a + ((1 - a) * (Mathf.Abs(engineForce) / maxEngineForce));
 			rb.AddRelativeTorque(Vector3.up * turningForce);
-			turningForce = 0;
 		}
+		
+		engineForce -= engineForce * engineForceDecay;
+		turningForce = 0;
 	}
 
 	private void OnCollisionEnter(Collision c) {
