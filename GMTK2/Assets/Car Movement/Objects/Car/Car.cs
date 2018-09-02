@@ -5,7 +5,7 @@ using UnityEngine;
 public class Car : MonoBehaviour {
 
 	// Inspector attributes
-	public float maxEngineForce, maxReverseForce, engineForceDecay, acceleration, brakingMultiplier, turning, groundedCheckMargin;
+	public float maxEngineForce, maxReverseForce, engineForceDecay, acceleration, brakingMultiplier, turning, turningEngineCutFactor, groundedCheckMargin;
 
 	// Properties
 	protected Rigidbody rb;
@@ -14,7 +14,7 @@ public class Car : MonoBehaviour {
 			return Physics.Raycast(transform.position, transform.rotation * Vector3.down, transform.localScale.y / 2 + groundedCheckMargin);
 		}
 	}
-	private float engineForce, turningForce;
+	[HideInInspector] public float engineForce, turningForce;
 
 	private void Start() {
 		rb = GetComponent<Rigidbody>();
@@ -23,13 +23,15 @@ public class Car : MonoBehaviour {
 	private void FixedUpdate() {
 
 		if(isGrounded) {
-
-			engineForce = Mathf.Clamp(engineForce, -maxReverseForce, maxEngineForce);
-			rb.AddRelativeForce(Vector3.forward * engineForce);
 			
 			float a = 0.5f; // this is how much turning you can do standing still
 			turningForce *= a + ((1 - a) * (Mathf.Abs(engineForce) / maxEngineForce));
 			rb.AddRelativeTorque(Vector3.up * turningForce);
+
+			engineForce -= engineForce * (turningEngineCutFactor * (Mathf.Abs(turningForce) / turning));
+
+			engineForce = Mathf.Clamp(engineForce, -maxReverseForce, maxEngineForce);
+			rb.AddRelativeForce(Vector3.forward * engineForce);
 		}
 		
 		engineForce -= engineForce * engineForceDecay;
