@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
 
 public class lapTracking : MonoBehaviour {
 
 	public int lapLim;
 	public Track track;
 	public GameObject lapCounterContainer;
+	public LayerMask trackMask;
 
 	private Dictionary<Car, int> laps = new Dictionary<Car, int>();
+	private Dictionary<Car, int> waypoints = new Dictionary<Car, int>();
 	private Dictionary<Car, LapCounter> lapCounters = new Dictionary<Car, LapCounter>();
 
 	private void Start() {
@@ -18,6 +22,12 @@ public class lapTracking : MonoBehaviour {
 			laps.Add(car, 0);
 		}
 
+		// Register all waypoints
+		foreach(Car car in track.cars) {
+			waypoints.Add(car, 0);
+		}
+		StartCoroutine(checkLapProgress());
+
 		// Register all lapCounters
 		foreach(LapCounter counter in lapCounterContainer.GetComponentsInChildren<LapCounter>()) {
 			foreach(Car car in track.cars) {
@@ -25,6 +35,34 @@ public class lapTracking : MonoBehaviour {
 					lapCounters.Add(car, counter);
 					break;
 				}
+			}
+		}
+	}
+
+	private IEnumerator checkLapProgress() {
+		while(true) {
+
+			foreach(Car car in track.cars) {
+				if(Physics.CheckSphere(car.transform.position, 10, trackMask)) {
+					
+					// sort waypoints by distance
+					Waypoint[] sortedWaypoints = track.waypoints.OrderBy(x => Vector3.Distance(x.transform.position, car.transform
+					.position)).ToArray();
+
+					// get nearest waypoint's index in track.waypoints
+					int nearestWaypointIndex = Array.IndexOf(track.waypoints, sortedWaypoints[0]);
+
+					// set waypoints[car] to that index
+					waypoints[car] = nearestWaypointIndex;
+
+					//Debug.Log(car.name + " " + waypoints[car]);
+				}
+				yield return new WaitForFixedUpdate();
+			}
+
+			Car[] orderedCars = track.cars.OrderByDescending(car => laps[car] * 10000 + waypoints[car]).ToArray();
+			for(int position = 0; position < orderedCars.Length; position++) {
+				lapCounters[orderedCars[position]].UpdateLapCounter(position);
 			}
 		}
 	}
@@ -69,7 +107,7 @@ public class lapTracking : MonoBehaviour {
 				if(getAngle(car.GetComponent<Rigidbody>()) < 0) {
 
 					laps[car]--;
-					lapCounters[car].UpdateLapCounter(laps[car]);
+					//lapCounters[car].UpdateLapCounter(laps[car]);
 
 					if(Mathf.Abs(laps[car]) > lapLim) {
 						track.RaceEnd();

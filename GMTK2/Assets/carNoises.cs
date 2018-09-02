@@ -49,9 +49,6 @@ public class carNoises : MonoBehaviour {
 
 		if (currentGear != newGear) {
 
-			Debug.Log("gear" + newGear);
-			//Debug.Break();
-
 			currentGear = newGear;
 
 			audioData.clip = builds[newGear];
