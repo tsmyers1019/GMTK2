@@ -36,4 +36,24 @@ public class PlayerCar : Car {
 			}
 		}
 	}
+
+	public void AutoPilot() {
+
+		RoboCar roboCar = gameObject.AddComponent<RoboCar>();
+
+		// hard coded values lol
+		roboCar.maxEngineForce = 200000;
+		roboCar.maxReverseForce = 50000;
+		roboCar.engineForceDecay = 0.01f;
+		roboCar.acceleration = 100000;
+		roboCar.brakingMultiplier = 1.5f;
+		roboCar.turning = 150000;
+		roboCar.groundedCheckMargin = 0.25f;
+		roboCar.track = transform.parent.parent.GetComponent<Track>();
+		roboCar.turningThreshold = 5;
+		roboCar.acceleratingThreshold = 15;
+		roboCar.waypointCountThreshold = 27;
+
+		Destroy(this);
+	}
 }

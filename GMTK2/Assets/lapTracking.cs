@@ -37,25 +37,21 @@ public class lapTracking : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other) {
 
-		// Check if the collider is a car
-		Car car = other.GetComponent<Car>();
-		if(car) {
+		if(track.go) {
 
-			// Add a lap for this car if it's going forward
-			if(getAngle(car.GetComponent<Rigidbody>()) > 0) {
+			// Check if the collider is a car
+			Car car = other.GetComponent<Car>();
+			if(car) {
 
-				laps[car]++;
-				lapCounters[car].UpdateLapCounter(laps[car]);
+				// Add a lap for this car if it's going forward
+				if(getAngle(car.GetComponent<Rigidbody>()) > 0) {
 
-				Debug.Log(string.Format(
-					"{0}:\t{1} / {2}",
-					car.name,
-					laps[car],
-					lapLim
-				));
+					laps[car]++;
+					lapCounters[car].UpdateLapCounter(laps[car]);
 
-				if(Mathf.Abs(laps[car]) > lapLim) {
-					//TODO: end race
+					if(Mathf.Abs(laps[car]) > lapLim) {
+						track.RaceEnd();
+					}
 				}
 			}
 		}
@@ -63,25 +59,21 @@ public class lapTracking : MonoBehaviour {
 
 	private void OnTriggerExit(Collider other) {
 
-		// Check if the collider is a car
-		Car car = other.GetComponent<Car>();
-		if(car) {
+		if(track.go) {
 
-			// Subtract a lap for this car if it's going backward
-			if(getAngle(car.GetComponent<Rigidbody>()) < 0) {
+			// Check if the collider is a car
+			Car car = other.GetComponent<Car>();
+			if(car) {
 
-				laps[car]--;
-				lapCounters[car].UpdateLapCounter(laps[car]);
+				// Subtract a lap for this car if it's going backward
+				if(getAngle(car.GetComponent<Rigidbody>()) < 0) {
 
-				Debug.Log(string.Format(
-					"{0}:\t{1} / {2}",
-					car.name,
-					laps[car],
-					lapLim
-				));
+					laps[car]--;
+					lapCounters[car].UpdateLapCounter(laps[car]);
 
-				if(Mathf.Abs(laps[car]) > lapLim) {
-					//TODO: end race
+					if(Mathf.Abs(laps[car]) > lapLim) {
+						track.RaceEnd();
+					}
 				}
 			}
 		}
