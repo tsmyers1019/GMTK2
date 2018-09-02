@@ -23,13 +23,15 @@ public class Car : MonoBehaviour {
 	private void FixedUpdate() {
 
 		if(isGrounded) {
-
-			engineForce = Mathf.Clamp(engineForce, -maxReverseForce, maxEngineForce);
-			rb.AddRelativeForce(Vector3.forward * engineForce);
 			
 			float a = 0.5f; // this is how much turning you can do standing still
 			turningForce *= a + ((1 - a) * (Mathf.Abs(engineForce) / maxEngineForce));
 			rb.AddRelativeTorque(Vector3.up * turningForce);
+
+			engineForce -= engineForce * (turningForce / turning);
+
+			engineForce = Mathf.Clamp(engineForce, -maxReverseForce, maxEngineForce);
+			rb.AddRelativeForce(Vector3.forward * engineForce);
 		}
 		
 		engineForce -= engineForce * engineForceDecay;

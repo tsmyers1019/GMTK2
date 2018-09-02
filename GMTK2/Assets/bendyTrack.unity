@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -378,16 +378,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cbce9edf2f0f4652af515f6087269a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hi2hiB: {fileID: 8300000, guid: 6d3bf600886db40d3be63f59bed5c8ca, type: 3}
-  hi2hiL: {fileID: 8300000, guid: e88e9d27930254b2fa2a52639faa7030, type: 3}
-  mid2hiB: {fileID: 8300000, guid: 19ea6137046784b618b557006405c54c, type: 3}
-  mid2hiL: {fileID: 8300000, guid: 6e63a1f423514423b89e90774cdf379f, type: 3}
-  lo2hiB: {fileID: 8300000, guid: 10638e40344344c0baf32cee01d40751, type: 3}
-  lo2hiL: {fileID: 8300000, guid: e9ef9819dd1ab406583a1b77f80978ab, type: 3}
+  builds:
+  - {fileID: 8300000, guid: 6d3bf600886db40d3be63f59bed5c8ca, type: 3}
+  - {fileID: 8300000, guid: 19ea6137046784b618b557006405c54c, type: 3}
+  - {fileID: 8300000, guid: 10638e40344344c0baf32cee01d40751, type: 3}
+  loops:
+  - {fileID: 8300000, guid: e88e9d27930254b2fa2a52639faa7030, type: 3}
+  - {fileID: 8300000, guid: 6e63a1f423514423b89e90774cdf379f, type: 3}
+  - {fileID: 8300000, guid: e9ef9819dd1ab406583a1b77f80978ab, type: 3}
   currentPlay: {fileID: 0}
-  gear1: 0
-  gear2: 0
-  gear3: 0
+  gear1: 0.1
+  gear2: 0.33
+  gear3: 0.99
   readEngineForce: 0
   myEngineForce: 0
   myMaxEngineForce: 0

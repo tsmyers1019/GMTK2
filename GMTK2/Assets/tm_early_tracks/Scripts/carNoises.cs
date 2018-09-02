@@ -5,169 +5,67 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class carNoises : MonoBehaviour {
 
-
 	AudioSource audioData;
 
-	public AudioClip hi2hiB;
-	public AudioClip hi2hiL;
-	public AudioClip mid2hiB;
-	public AudioClip mid2hiL;
-	public AudioClip lo2hiB;
-	public AudioClip lo2hiL;
-
-	public AudioClip currentPlay;
-
-	private bool initial;
-	private bool initial2;
-	private bool initial3;
-	private bool initial4;
+	public AudioClip[] builds;
+	public AudioClip[] loops;
 
 	public float gear1;
 	public float gear2;
 	public float gear3;
 
-
 	public float readEngineForce;
 	public float myEngineForce;
 	public float myMaxEngineForce;
+
+	private int currentGear;
+
 	// Use this for initialization
 	void Start () {
 		audioData = GetComponent <AudioSource>();
-		initial = true;
-		initial2 = true;
-		initial3 = true;
-		initial4 = true;
-		gear1 = 0.33f;
-		gear2 = 0.66f;
-		gear3 = 0.99f;
-		
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
 		myEngineForce = gameObject.GetComponent <Car>().engineForce;
 		myMaxEngineForce = gameObject.GetComponent <Car>().maxEngineForce;
 
 		readEngineForce = myEngineForce/myMaxEngineForce;// 1 == 100 %
 
-		readEngineForce = readEngineForce ;// maybe better values?
-
-
-		if (readEngineForce > 0.01f ){// 0%
-
-		//currentPlay = audioData.clip;
-		//currentPlay= hi2hiB;
-		//audioData.Play(0);
+		if (readEngineForce > gear3) {
+			doGear(3);
 		}
-
-		if (readEngineForce < 0.01f ){
-			if (initial4 == false){
-			initial4 = true;
+		else if (readEngineForce > gear2) {
+			doGear(2);
+		}
+		else if (readEngineForce > gear1) {
+			doGear(1);
+		}
+		else if (readEngineForce < gear1) {
 			audioData.Stop();
-			}
+		}
+	}
+
+	private void doGear(int newGear) {
+
+		if (currentGear != newGear) {
+
+			Debug.Log("gear" + newGear);
+			//Debug.Break();
+
+			currentGear = newGear;
+
+			audioData.clip = builds[newGear - 1];// tell it where to be
+			audioData.loop = false;
+			audioData.Play(0);
 		}
 
+		if (currentGear == newGear && audioData.isPlaying == false) {
 
-		if (readEngineForce > gear1 ){// 33% THESE NEED TO BE MUCH HIGHER`
-
-				if (initial == true){
-					initial = false;
-					currentPlay= hi2hiB;// tell it what to be
-					audioData.clip = currentPlay;// tell it where to be
-					audioData.loop = false;
-					audioData.Play(0);
-
-				}
-
-				if (initial == false){
-					if(audioData.isPlaying == false){
-						currentPlay= hi2hiL;
-						audioData.clip = currentPlay;
-						audioData.loop = true;
-						audioData.Play(0);
-					}
-				}
-
-
-
-
+			audioData.clip = loops[newGear - 1];
+			audioData.loop = true;
+			audioData.Play(0);
 		}
-		if (readEngineForce < gear1 ){
-			if (initial == false){
-			initial = true;
-			audioData.Stop();
-			}
-		}
-
-
-		if (readEngineForce > gear2 ){// 66%// because there is only one audio source this will cover up the above'
-
-
-
-				if (initial2 == true){
-					initial2 = false;
-					currentPlay= mid2hiB;// tell it what to be
-					audioData.clip = currentPlay;// tell it where to be
-					audioData.loop = false;
-					audioData.Play(0);
-
-				}
-
-				if (initial2 == false){
-					if(audioData.isPlaying == false){// the build clip has finished
-						currentPlay= mid2hiL;
-						audioData.clip = currentPlay;
-						audioData.loop = true;
-						audioData.Play(0);
-					}
-				}
-
-
-
-
-		}
-		if (readEngineForce < gear2 ){
-			if (initial2 == false){
-					initial2 = true;
-					audioData.Stop();
-			}
-				}
-
-
-		if (readEngineForce > gear3 ){// 99%// because there is only one audio source this will cover up the above'
-
-
-
-				if (initial3 == true){
-					initial3 = false;
-					currentPlay= lo2hiB;// tell it what to be
-					audioData.clip = currentPlay;// tell it where to be
-					audioData.loop = false;
-					audioData.Play(0);
-
-				}
-
-				if (initial3 == false){
-					if(audioData.isPlaying == false){// the build clip has finished
-						currentPlay= lo2hiL;
-						audioData.clip = currentPlay;
-						audioData.loop = true;
-						audioData.Play(0);
-					}
-				}
-
-
-
-
-		}
-		if (readEngineForce < gear3 ){
-			if (initial3 == false){
-			initial3 = true;
-			audioData.Stop();
-			}
-		}
-
-
-
 	}
 }
