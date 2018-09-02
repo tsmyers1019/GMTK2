@@ -39,6 +39,8 @@ public class PlayerCar : Car {
 
 	public void AutoPilot() {
 
+		return;
+
 		RoboCar roboCar = gameObject.AddComponent<RoboCar>();
 
 		// hard coded values lol
