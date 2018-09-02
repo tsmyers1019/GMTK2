@@ -282,10 +282,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -297,7 +297,7 @@ AudioSource:
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 1
-  BypassReverbZones: 0
+  BypassReverbZones: 1
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -385,7 +385,9 @@ MonoBehaviour:
   lo2hiB: {fileID: 8300000, guid: 10638e40344344c0baf32cee01d40751, type: 3}
   lo2hiL: {fileID: 8300000, guid: e9ef9819dd1ab406583a1b77f80978ab, type: 3}
   currentPlay: {fileID: 0}
-  gear: 0
+  gear1: 0
+  gear2: 0
+  gear3: 0
   readEngineForce: 0
   myEngineForce: 0
   myMaxEngineForce: 0
