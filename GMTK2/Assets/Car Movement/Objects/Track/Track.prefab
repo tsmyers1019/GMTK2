@@ -778,7 +778,7 @@ GameObject:
   - component: {fileID: 169912538011845080}
   m_Layer: 0
   m_Name: PlayerCar
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4956,6 +4956,10 @@ MonoBehaviour:
   countdownText: {fileID: 0}
   readyText: GET READY...
   goText: GO!
+  winText: YOU WIN!
+  loseText: YOU LOSE!
+  nextText: '[SPACE] TO ADVANCE'
+  tryAgainText: '[SPACE] TO RETRY'
   countdownFrom: 3
   initialWaitTime: 2
   countdownIntervalTime: 1
@@ -5312,6 +5316,10 @@ MonoBehaviour:
   lapLim: 3
   track: {fileID: 114597908629222376}
   lapCounterContainer: {fileID: 0}
+  trackMask:
+    serializedVersion: 2
+    m_Bits: 512
+  orderedCars: []
 --- !u!114 &114942235679324752
 MonoBehaviour:
   m_ObjectHideFlags: 1

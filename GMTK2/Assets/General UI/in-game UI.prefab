@@ -617,6 +617,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b941a4ba19bf3cc409b55b435e630ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jiggleInterval: 0.1
+  jiggleAmount: 2
   _text: 3
 --- !u!114 &114546058089004016
 MonoBehaviour:

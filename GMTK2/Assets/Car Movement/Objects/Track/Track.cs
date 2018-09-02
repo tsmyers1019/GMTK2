@@ -5,7 +5,7 @@ using UnityEngine;
 public class Track : MonoBehaviour {
 
 	public LayeredText countdownText;
-	public string readyText, goText;
+	public string readyText, goText, winText, loseText, nextText, tryAgainText;
 	public int countdownFrom;
 	public float initialWaitTime, countdownIntervalTime;
 
@@ -64,6 +64,18 @@ public class Track : MonoBehaviour {
 		countdownText.Text = "";
 	}
 
+	private IEnumerator endText() {
+
+		bool win = GetComponentInChildren<lapTracking>().orderedCars[0].tag == "Player";
+
+		while(true) {
+			countdownText.Text = win ? winText : loseText;
+			yield return new WaitForSeconds(countdownIntervalTime);
+			countdownText.Text = win ? nextText : tryAgainText;
+			yield return new WaitForSeconds(countdownIntervalTime);
+		}
+	}
+
 	public void RaceStart() {
 
 		go = true;
@@ -76,6 +88,8 @@ public class Track : MonoBehaviour {
 	public void RaceEnd() {
 
 		go = false;
+
+		StartCoroutine(endText());
 
 		foreach(Car car in cars) {
 			if(car is PlayerCar) {

@@ -612,21 +612,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114597908629222376, guid: d0c19f1615015344384931028b83b7bd,
-        type: 2}
-      propertyPath: countdownText
-      value: 
-      objectReference: {fileID: 1802870998}
     - target: {fileID: 114924137775036574, guid: d0c19f1615015344384931028b83b7bd,
         type: 2}
       propertyPath: lapCounterContainer
       value: 
       objectReference: {fileID: 391403296}
-    - target: {fileID: 114924137775036574, guid: d0c19f1615015344384931028b83b7bd,
+    - target: {fileID: 114597908629222376, guid: d0c19f1615015344384931028b83b7bd,
         type: 2}
-      propertyPath: trackMask.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
+      propertyPath: countdownText
+      value: 
+      objectReference: {fileID: 1802870998}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0c19f1615015344384931028b83b7bd, type: 2}
   m_IsPrefabAsset: 0
@@ -927,16 +922,6 @@ Prefab:
       propertyPath: car
       value: 
       objectReference: {fileID: 1853411227}
-    - target: {fileID: 114529755300200982, guid: 5abd98db35a7cbb4e8289a2fa09eee03,
-        type: 2}
-      propertyPath: jiggleInterval
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114529755300200982, guid: 5abd98db35a7cbb4e8289a2fa09eee03,
-        type: 2}
-      propertyPath: jiggleAmount
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5abd98db35a7cbb4e8289a2fa09eee03, type: 2}
   m_IsPrefabAsset: 0
