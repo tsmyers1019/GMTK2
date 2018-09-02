@@ -1805,6 +1805,36 @@ Prefab:
       propertyPath: waypoints.Array.data[19]
       value: 
       objectReference: {fileID: 1049673097}
+    - target: {fileID: 114597908629222376, guid: d0c19f1615015344384931028b83b7bd,
+        type: 2}
+      propertyPath: countdownFrom
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114597908629222376, guid: d0c19f1615015344384931028b83b7bd,
+        type: 2}
+      propertyPath: initialWaitTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114597908629222376, guid: d0c19f1615015344384931028b83b7bd,
+        type: 2}
+      propertyPath: countdownIntervalTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114597908629222376, guid: d0c19f1615015344384931028b83b7bd,
+        type: 2}
+      propertyPath: goText
+      value: GO!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114597908629222376, guid: d0c19f1615015344384931028b83b7bd,
+        type: 2}
+      propertyPath: readyText
+      value: GET READY...
+      objectReference: {fileID: 0}
+    - target: {fileID: 114597908629222376, guid: d0c19f1615015344384931028b83b7bd,
+        type: 2}
+      propertyPath: countdownText
+      value: 
+      objectReference: {fileID: 1802870998}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0c19f1615015344384931028b83b7bd, type: 2}
   m_IsPrefabAsset: 0
@@ -2706,6 +2736,16 @@ Prefab:
       propertyPath: car
       value: 
       objectReference: {fileID: 1853411227}
+    - target: {fileID: 114529755300200982, guid: 5abd98db35a7cbb4e8289a2fa09eee03,
+        type: 2}
+      propertyPath: text
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114529755300200982, guid: 5abd98db35a7cbb4e8289a2fa09eee03,
+        type: 2}
+      propertyPath: _text
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5abd98db35a7cbb4e8289a2fa09eee03, type: 2}
   m_IsPrefabAsset: 0
@@ -6383,6 +6423,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4996459879530612, guid: f12511360eff1c2428e0c761965e95d8,
     type: 2}
   m_PrefabInternal: {fileID: 1856910641}
+--- !u!114 &1802870998 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114529755300200982, guid: 5abd98db35a7cbb4e8289a2fa09eee03,
+    type: 2}
+  m_PrefabInternal: {fileID: 571701233}
+  m_Script: {fileID: 11500000, guid: b941a4ba19bf3cc409b55b435e630ecc, type: 3}
 --- !u!114 &1853411227 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114938879613621850, guid: 6472b73d3471ca8478a712ba6cb4283e,

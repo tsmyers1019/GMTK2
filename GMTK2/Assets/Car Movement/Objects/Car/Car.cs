@@ -15,6 +15,7 @@ public class Car : MonoBehaviour {
 		}
 	}
 	[HideInInspector] public float engineForce, turningForce;
+	[HideInInspector] public bool locked;
 
 	private void Start() {
 		rb = GetComponent<Rigidbody>();
@@ -22,7 +23,7 @@ public class Car : MonoBehaviour {
 
 	private void FixedUpdate() {
 
-		if(isGrounded) {
+		if(!locked && isGrounded) {
 			
 			float a = 0.5f; // this is how much turning you can do standing still
 			turningForce *= a + ((1 - a) * (Mathf.Abs(engineForce) / maxEngineForce));

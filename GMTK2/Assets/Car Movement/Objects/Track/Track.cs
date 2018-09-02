@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Track : MonoBehaviour {
 
-	[HideInInspector] public bool go;
+	public LayeredText countdownText;
+	public string readyText, goText;
+	public int countdownFrom;
+	public float initialWaitTime, countdownIntervalTime;
 
+	[HideInInspector] public bool go;
 	[HideInInspector] public Waypoint[] waypoints {
 		get {
 			return GetComponentsInChildren<Waypoint>();
@@ -18,7 +22,14 @@ public class Track : MonoBehaviour {
 	}
 
 	private void Start() {
-		RaceStart();
+
+		// lock controls
+		foreach(Car car in cars) {
+			car.locked = true;
+		}
+
+		// countdown to unlock controls
+		StartCoroutine(readySetGo());
 	}
 
 	private void OnDrawGizmos() {
@@ -32,8 +43,34 @@ public class Track : MonoBehaviour {
 		}
 	}
 
+	private IEnumerator readySetGo() {
+
+		// READY...
+		countdownText.Text = readyText;
+		yield return new WaitForSeconds(initialWaitTime);
+
+		// 3... 2... 1...
+		for(int count = 3; count > 0; count--) {
+			countdownText.Text = ""+count;
+			yield return new WaitForSeconds(countdownIntervalTime);
+		}
+
+		// GO!
+		countdownText.Text = goText;
+		RaceStart();
+
+		// clear
+		yield return new WaitForSeconds(countdownIntervalTime);
+		countdownText.Text = "";
+	}
+
 	public void RaceStart() {
+
 		go = true;
+		
+		foreach(Car car in cars) {
+			car.locked = false;
+		}
 	}
 
 	public void RaceEnd() {
