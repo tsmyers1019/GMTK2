@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4507981, g: 0.5007243, b: 0.57473546, a: 1}
+  m_IndirectSpecularColor: {r: 0.4507975, g: 0.5007233, b: 0.5747347, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4365,7 +4365,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 239ca4627726cdf4b90e774af4af9369, type: 2}
+  - {fileID: 2100000, guid: 8d2af88c443dd4849b6846ab734dd594, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4587,42 +4587,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4582819740431176, guid: 8967a7106c8ad46628c91934f1860a40, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 270
-      objectReference: {fileID: 0}
-    - target: {fileID: 64834326324231752, guid: 8967a7106c8ad46628c91934f1860a40,
+    - target: {fileID: 114537567208011730, guid: 8967a7106c8ad46628c91934f1860a40,
         type: 2}
-      propertyPath: m_Convex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 64834326324231752, guid: 8967a7106c8ad46628c91934f1860a40,
+      propertyPath: track
+      value: 
+      objectReference: {fileID: 855498915}
+    - target: {fileID: 114537567208011730, guid: 8967a7106c8ad46628c91934f1860a40,
         type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 64834326324231752, guid: 8967a7106c8ad46628c91934f1860a40,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 65663447809550872, guid: 8967a7106c8ad46628c91934f1860a40,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.117606975
-      objectReference: {fileID: 0}
-    - target: {fileID: 65663447809550872, guid: 8967a7106c8ad46628c91934f1860a40,
-        type: 2}
-      propertyPath: m_Center.x
-      value: -4.9411955
-      objectReference: {fileID: 0}
-    - target: {fileID: 65663447809550872, guid: 8967a7106c8ad46628c91934f1860a40,
-        type: 2}
-      propertyPath: m_Center.z
-      value: -2.8655816e-14
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 64834326324231752, guid: 8967a7106c8ad46628c91934f1860a40, type: 2}
+      propertyPath: lapCounterContainer
+      value: 
+      objectReference: {fileID: 391403296}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8967a7106c8ad46628c91934f1860a40, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &1147291756
@@ -6210,25 +6185,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f12511360eff1c2428e0c761965e95d8, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1759301998 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1631097403336782, guid: 8967a7106c8ad46628c91934f1860a40,
-    type: 2}
-  m_PrefabInternal: {fileID: 1138684916}
---- !u!114 &1759302004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1759301998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c3f51031d5c420b8c067501adccd87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lapLim: 3
-  track: {fileID: 855498915}
-  lapCounterContainer: {fileID: 391403296}
 --- !u!1 &1759608889
 GameObject:
   m_ObjectHideFlags: 0
