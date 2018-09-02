@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/SCENES(FINISHED)/Title.unity
     guid: ea32014af79c94bd5906b812a8485c0b
   - enabled: 1
+    path: Assets/SCENES(FINISHED)/SquareTracklv.unity
+    guid: f895c15567bf347d3b9dd0f2ef97e8f2
+  - enabled: 1
+    path: Assets/SkewSquareTracklv.unity
+    guid: 28a2cf9e208d349c690fd9a76a54ed22
+  - enabled: 1
     path: Assets/Car Movement/Scenes/Car Movement Test Scene.unity
     guid: fab116afae4f88c48904f2afadc7c06f
   m_configObjects: {}
