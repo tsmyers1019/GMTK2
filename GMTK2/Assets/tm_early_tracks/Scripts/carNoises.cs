@@ -20,18 +20,16 @@ public class carNoises : MonoBehaviour {
 
 	private int currentGear;
 
-	// Use this for initialization
 	void Start () {
 		audioData = GetComponent <AudioSource>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
 
-		myEngineForce = gameObject.GetComponent <Car>().engineForce;
-		myMaxEngineForce = gameObject.GetComponent <Car>().maxEngineForce;
+		myEngineForce = gameObject.GetComponent<Car>().engineForce;
+		myMaxEngineForce = gameObject.GetComponent<Car>().maxEngineForce;
 
-		readEngineForce = myEngineForce/myMaxEngineForce;// 1 == 100 %
+		readEngineForce = myEngineForce / myMaxEngineForce;
 
 		if (readEngineForce > gear3) {
 			doGear(3);
@@ -43,7 +41,7 @@ public class carNoises : MonoBehaviour {
 			doGear(1);
 		}
 		else if (readEngineForce < gear1) {
-			audioData.Stop();
+			doGear(0);
 		}
 	}
 
@@ -56,15 +54,15 @@ public class carNoises : MonoBehaviour {
 
 			currentGear = newGear;
 
-			audioData.clip = builds[newGear - 1];// tell it where to be
+			audioData.clip = builds[newGear];
 			audioData.loop = false;
 			audioData.Play(0);
 		}
 
 		if (currentGear == newGear && audioData.isPlaying == false) {
 
-			audioData.clip = loops[newGear - 1];
-			audioData.loop = true;
+			audioData.clip = loops[newGear];
+			audioData.loop = !(newGear == 1); // don't loop on gear 1
 			audioData.Play(0);
 		}
 	}

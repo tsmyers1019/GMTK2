@@ -264,6 +264,15 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1937320946041576, guid: 6ed095f6e22f0724da7f02cb8be79277, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114690025777624628, guid: 6ed095f6e22f0724da7f02cb8be79277,
+        type: 2}
+      propertyPath: turningEngineCutFactor
+      value: 0.095
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ed095f6e22f0724da7f02cb8be79277, type: 2}
   m_IsPrefabAsset: 0
@@ -383,10 +392,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 19ea6137046784b618b557006405c54c, type: 3}
   - {fileID: 8300000, guid: 10638e40344344c0baf32cee01d40751, type: 3}
   loops:
-  - {fileID: 8300000, guid: e88e9d27930254b2fa2a52639faa7030, type: 3}
+  - {fileID: 8300000, guid: 56f3f3b136ba14c5b9ab3a12f0abf4a4, type: 3}
   - {fileID: 8300000, guid: 6e63a1f423514423b89e90774cdf379f, type: 3}
   - {fileID: 8300000, guid: e9ef9819dd1ab406583a1b77f80978ab, type: 3}
-  currentPlay: {fileID: 0}
   gear1: 0.1
   gear2: 0.33
   gear3: 0.99
