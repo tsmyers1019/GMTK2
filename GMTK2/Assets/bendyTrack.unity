@@ -296,7 +296,7 @@ AudioSource:
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
-  BypassListenerEffects: 0
+  BypassListenerEffects: 1
   BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
@@ -380,11 +380,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hi2hiB: {fileID: 8300000, guid: 6d3bf600886db40d3be63f59bed5c8ca, type: 3}
   hi2hiL: {fileID: 8300000, guid: e88e9d27930254b2fa2a52639faa7030, type: 3}
-  mid2hiB: {fileID: 8300000, guid: 10638e40344344c0baf32cee01d40751, type: 3}
-  mid2hiL: {fileID: 8300000, guid: e9ef9819dd1ab406583a1b77f80978ab, type: 3}
-  lo2hiB: {fileID: 8300000, guid: 19ea6137046784b618b557006405c54c, type: 3}
-  lo2hiL: {fileID: 8300000, guid: 6e63a1f423514423b89e90774cdf379f, type: 3}
+  mid2hiB: {fileID: 8300000, guid: 19ea6137046784b618b557006405c54c, type: 3}
+  mid2hiL: {fileID: 8300000, guid: 6e63a1f423514423b89e90774cdf379f, type: 3}
+  lo2hiB: {fileID: 8300000, guid: 10638e40344344c0baf32cee01d40751, type: 3}
+  lo2hiL: {fileID: 8300000, guid: e9ef9819dd1ab406583a1b77f80978ab, type: 3}
   currentPlay: {fileID: 0}
+  gear: 0
   readEngineForce: 0
   myEngineForce: 0
   myMaxEngineForce: 0

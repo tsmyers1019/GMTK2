@@ -18,10 +18,13 @@ public class carNoises : MonoBehaviour {
 	public AudioClip currentPlay;
 
 	private bool initial;
-
 	private bool initial2;
 	private bool initial3;
 	private bool initial4;
+
+	public float gear1;
+	public float gear2;
+	public float gear3;
 
 
 	public float readEngineForce;
@@ -34,6 +37,9 @@ public class carNoises : MonoBehaviour {
 		initial2 = true;
 		initial3 = true;
 		initial4 = true;
+		gear1 = 0.33f;
+		gear2 = 0.66f;
+		gear3 = 0.99f;
 		
 	}
 	
@@ -43,6 +49,8 @@ public class carNoises : MonoBehaviour {
 		myMaxEngineForce = gameObject.GetComponent <Car>().maxEngineForce;
 
 		readEngineForce = myEngineForce/myMaxEngineForce;// 1 == 100 %
+
+		readEngineForce = readEngineForce ;// maybe better values?
 
 
 		if (readEngineForce > 0.01f ){// 0%
@@ -60,7 +68,7 @@ public class carNoises : MonoBehaviour {
 		}
 
 
-		if (readEngineForce > 0.33f ){// 33% THESE NEED TO BE MUCH HIGHER`
+		if (readEngineForce > gear1 ){// 33% THESE NEED TO BE MUCH HIGHER`
 
 				if (initial == true){
 					initial = false;
@@ -84,7 +92,7 @@ public class carNoises : MonoBehaviour {
 
 
 		}
-		if (readEngineForce < 0.33f ){
+		if (readEngineForce < gear1 ){
 			if (initial == false){
 			initial = true;
 			audioData.Stop();
@@ -92,7 +100,7 @@ public class carNoises : MonoBehaviour {
 		}
 
 
-		if (readEngineForce > 0.66f ){// 66%// because there is only one audio source this will cover up the above'
+		if (readEngineForce > gear2 ){// 66%// because there is only one audio source this will cover up the above'
 
 
 
@@ -118,7 +126,7 @@ public class carNoises : MonoBehaviour {
 
 
 		}
-		if (readEngineForce < 0.66f ){
+		if (readEngineForce < gear2 ){
 			if (initial2 == false){
 					initial2 = true;
 					audioData.Stop();
@@ -126,7 +134,7 @@ public class carNoises : MonoBehaviour {
 				}
 
 
-		if (readEngineForce > 0.99f ){// 99%// because there is only one audio source this will cover up the above'
+		if (readEngineForce > gear3 ){// 99%// because there is only one audio source this will cover up the above'
 
 
 
@@ -152,7 +160,7 @@ public class carNoises : MonoBehaviour {
 
 
 		}
-		if (readEngineForce < 0.99f ){
+		if (readEngineForce < gear3 ){
 			if (initial3 == false){
 			initial3 = true;
 			audioData.Stop();
