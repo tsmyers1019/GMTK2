@@ -63,7 +63,7 @@ public class lapTracking : MonoBehaviour {
 						// set waypoints[car] to that index
 						waypoints[car] = nearestWaypointIndex;
 
-						//Debug.Log(car.name + " " + waypoints[car]);
+						Debug.Log(car.name + " " + waypoints[car]);
 					}
 					yield return new WaitForFixedUpdate();
 				}
@@ -99,6 +99,8 @@ public class lapTracking : MonoBehaviour {
 					if(Mathf.Abs(laps[car]) > lapLim) {
 						track.RaceEnd();
 					}
+
+					Debug.Log(car.name + laps[car]);
 				}
 			}
 		}

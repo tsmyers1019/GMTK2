@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Track : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class Track : MonoBehaviour {
 	public string readyText, goText, winText, loseText, nextText, tryAgainText;
 	public int countdownFrom;
 	public float initialWaitTime, countdownIntervalTime;
+	public KeyCode resetKey;
 
 	[HideInInspector] public bool go;
 	[HideInInspector] public Waypoint[] waypoints {
@@ -20,6 +22,7 @@ public class Track : MonoBehaviour {
 			return GetComponentsInChildren<Car>();
 		}
 	}
+	private bool win;
 
 	private void Start() {
 
@@ -30,6 +33,21 @@ public class Track : MonoBehaviour {
 
 		// countdown to unlock controls
 		StartCoroutine(readySetGo());
+	}
+
+	private void Update() {
+		if(Input.GetKeyDown(resetKey)) {
+			if(win) {
+				int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+				if(nextScene == SceneManager.sceneCountInBuildSettings) {
+					nextScene = 0;
+				}
+				SceneManager.LoadScene(nextScene);
+			}
+			else {
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			}
+		}
 	}
 
 	private void OnDrawGizmos() {
@@ -65,9 +83,6 @@ public class Track : MonoBehaviour {
 	}
 
 	private IEnumerator endText() {
-
-		bool win = GetComponentInChildren<lapTracking>().orderedCars[0].tag == "Player";
-
 		while(true) {
 			countdownText.Text = win ? winText : loseText;
 			yield return new WaitForSeconds(countdownIntervalTime);
@@ -86,6 +101,8 @@ public class Track : MonoBehaviour {
 	}
 
 	public void RaceEnd() {
+
+		win = GetComponentInChildren<lapTracking>().orderedCars[0].tag == "Player";
 
 		go = false;
 
