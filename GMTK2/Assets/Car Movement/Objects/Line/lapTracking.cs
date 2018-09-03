@@ -17,7 +17,9 @@ public class lapTracking : MonoBehaviour {
 	private Dictionary<Car, int> waypoints = new Dictionary<Car, int>();
 	private Dictionary<Car, LapCounter> lapCounters = new Dictionary<Car, LapCounter>();
 	private Dictionary<Car, placeCounter> placeCounters = new Dictionary<Car, placeCounter>();
-	[HideInInspector] public Car[] orderedCars;
+	/*[HideInInspector]*/ public Car[] orderedCars;// ordered cars is not being updated at all untill we cross the line
+	// then I think it defaults while you are all on the same lap
+	// it needs to do this at every waypoint?
 
 	private void Start() {
 
@@ -53,7 +55,7 @@ public class lapTracking : MonoBehaviour {
 		}
 	}
 
-	private IEnumerator checkLapProgress() {
+	public IEnumerator checkLapProgress() {
 		while(true) {
 
 			// wait if race is not going
@@ -64,7 +66,7 @@ public class lapTracking : MonoBehaviour {
 			else {
 
 				foreach(Car car in track.cars) {
-					if(Physics.CheckSphere(car.transform.position, 10, trackMask)) {
+					if(Physics.CheckSphere(car.transform.position, 10, trackMask)== true) {
 						
 						// sort waypoints by distance
 						Waypoint[] sortedWaypoints = track.waypoints.OrderBy(x => Vector3.Distance(x.transform.position, car.transform
