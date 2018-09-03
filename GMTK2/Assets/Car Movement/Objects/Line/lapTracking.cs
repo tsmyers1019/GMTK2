@@ -9,11 +9,14 @@ public class lapTracking : MonoBehaviour {
 	public int lapLim;
 	public Track track;
 	public GameObject lapCounterContainer;
+
+	//public GameObject PlaceCounterContainer;
 	public LayerMask trackMask;
 
 	private Dictionary<Car, int> laps = new Dictionary<Car, int>();
 	private Dictionary<Car, int> waypoints = new Dictionary<Car, int>();
 	private Dictionary<Car, LapCounter> lapCounters = new Dictionary<Car, LapCounter>();
+	private Dictionary<Car, placeCounter> placeCounters = new Dictionary<Car, placeCounter>();
 	[HideInInspector] public Car[] orderedCars;
 
 	private void Start() {
@@ -34,6 +37,16 @@ public class lapTracking : MonoBehaviour {
 			foreach(Car car in track.cars) {
 				if(counter.car == car) {
 					lapCounters.Add(car, counter);
+					break;
+				}
+			}
+		}
+		// I just coppied everything that seems relvant to the UI and tracking laps that I could find
+		// and replaced Lap with place
+		foreach(placeCounter counter in lapCounterContainer.GetComponentsInChildren<placeCounter>()) {
+			foreach(Car car in track.cars) {
+				if(counter.car == car) {
+					placeCounters.Add(car, counter);
 					break;
 				}
 			}
@@ -68,9 +81,11 @@ public class lapTracking : MonoBehaviour {
 					yield return new WaitForFixedUpdate();
 				}
 
+					//MIGHT NEED TO FIGURE OUT WHAT'S GOING ON HERE...
+					// currently it starts by reading places, then updates to laps
 				orderedCars = track.cars.OrderByDescending(car => laps[car] * 10000 + waypoints[car]).ToArray();
 				for(int position = 0; position < orderedCars.Length; position++) {
-					lapCounters[orderedCars[position]].UpdateLapCounter(position);
+					placeCounters[orderedCars[position]].UpdateLapCounter(position);// may change to place
 				}	
 			}
 		}

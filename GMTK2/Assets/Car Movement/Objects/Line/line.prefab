@@ -291,7 +291,7 @@ MonoBehaviour:
   lapCounterContainer: {fileID: 0}
   trackMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   orderedCars: []
 --- !u!136 &136114462249011348
 CapsuleCollider:

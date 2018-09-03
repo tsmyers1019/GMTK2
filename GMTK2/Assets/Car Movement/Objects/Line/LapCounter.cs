@@ -14,7 +14,7 @@ public class LapCounter : MonoBehaviour {
 
 	private int lap;
 
-	/*
+	
 	public void UpdateLapCounter(int newLap) {
 		newLap = Mathf.Abs(newLap);
 		if(newLap > lap) {
@@ -22,8 +22,8 @@ public class LapCounter : MonoBehaviour {
 			GetComponent<Text>().text = ""+lap;
 		}
 	}
-	*/
-
+	
+/*
 	public void UpdateLapCounter(int place) {
 		place = place + 1; // 0 = 1st place
 		string suffix = "";
@@ -43,4 +43,6 @@ public class LapCounter : MonoBehaviour {
 		}
 		GetComponent<Text>().text = place + suffix;
 	}
+*/
 }
+
