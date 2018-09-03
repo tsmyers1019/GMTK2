@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4507981, g: 0.5007243, b: 0.57473546, a: 1}
+  m_IndirectSpecularColor: {r: 0.4507975, g: 0.5007233, b: 0.5747347, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -447,7 +447,7 @@ Transform:
   m_LocalScale: {x: 93.11276, y: 21.99696, z: 165.83383}
   m_Children: []
   m_Father: {fileID: 887269866}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -51.407, z: 0}
 --- !u!65 &69846655
 BoxCollider:
@@ -1532,7 +1532,7 @@ Transform:
   m_LocalScale: {x: 32.72088, y: 21.99696, z: 200}
   m_Children: []
   m_Father: {fileID: 887269866}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &268998463
 BoxCollider:
@@ -3393,31 +3393,31 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114676048590315702, guid: 5abd98db35a7cbb4e8289a2fa09eee03,
-        type: 2}
-      propertyPath: car
-      value: 
-      objectReference: {fileID: 2131111003}
-    - target: {fileID: 114855486258840754, guid: 5abd98db35a7cbb4e8289a2fa09eee03,
-        type: 2}
-      propertyPath: car
-      value: 
-      objectReference: {fileID: 129120469}
-    - target: {fileID: 114546058089004016, guid: 5abd98db35a7cbb4e8289a2fa09eee03,
-        type: 2}
-      propertyPath: car
-      value: 
-      objectReference: {fileID: 2131017837}
-    - target: {fileID: 114187619428217816, guid: 5abd98db35a7cbb4e8289a2fa09eee03,
-        type: 2}
-      propertyPath: car
-      value: 
-      objectReference: {fileID: 1439753015}
     - target: {fileID: 114059321244047116, guid: 5abd98db35a7cbb4e8289a2fa09eee03,
         type: 2}
       propertyPath: car
       value: 
       objectReference: {fileID: 1853411227}
+    - target: {fileID: 114187619428217816, guid: 5abd98db35a7cbb4e8289a2fa09eee03,
+        type: 2}
+      propertyPath: car
+      value: 
+      objectReference: {fileID: 1439753015}
+    - target: {fileID: 114546058089004016, guid: 5abd98db35a7cbb4e8289a2fa09eee03,
+        type: 2}
+      propertyPath: car
+      value: 
+      objectReference: {fileID: 2131017837}
+    - target: {fileID: 114855486258840754, guid: 5abd98db35a7cbb4e8289a2fa09eee03,
+        type: 2}
+      propertyPath: car
+      value: 
+      objectReference: {fileID: 129120469}
+    - target: {fileID: 114676048590315702, guid: 5abd98db35a7cbb4e8289a2fa09eee03,
+        type: 2}
+      propertyPath: car
+      value: 
+      objectReference: {fileID: 2131111003}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5abd98db35a7cbb4e8289a2fa09eee03, type: 2}
   m_IsPrefabAsset: 0
@@ -4936,11 +4936,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1101490484}
   - {fileID: 1966832183}
   - {fileID: 1412902073}
   - {fileID: 69846654}
   - {fileID: 268998462}
-  - {fileID: 1101490484}
   - {fileID: 1027970675}
   - {fileID: 1354639425}
   - {fileID: 596936246}
@@ -6270,7 +6270,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 239ca4627726cdf4b90e774af4af9369, type: 2}
+  - {fileID: 2100000, guid: 8d2af88c443dd4849b6846ab734dd594, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6308,7 +6308,7 @@ Transform:
   m_LocalScale: {x: 200, y: 1, z: 200}
   m_Children: []
   m_Father: {fileID: 887269866}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1111839024
 GameObject:
@@ -6491,7 +6491,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1111839024}
   serializedVersion: 2
-  m_Mass: 1500
+  m_Mass: 700
   m_Drag: 1.5
   m_AngularDrag: 4
   m_UseGravity: 1
@@ -7512,7 +7512,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4582819740431176, guid: 8967a7106c8ad46628c91934f1860a40, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1631097403336782, guid: 8967a7106c8ad46628c91934f1860a40, type: 2}
       propertyPath: m_Name
@@ -7784,7 +7784,7 @@ Transform:
   m_LocalScale: {x: 168.76404, y: 14.26393, z: 168.76404}
   m_Children: []
   m_Father: {fileID: 887269866}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1412902074
 MeshCollider:
@@ -11194,7 +11194,7 @@ Transform:
   m_LocalScale: {x: 110.30328, y: 9.3228245, z: 110.30328}
   m_Children: []
   m_Father: {fileID: 887269866}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1966832184
 MeshCollider:
@@ -12122,7 +12122,7 @@ MonoBehaviour:
   engineForceDecay: 0.01
   acceleration: 200000
   brakingMultiplier: 2
-  turning: 100000
+  turning: 200000
   turningEngineCutFactor: 0.0095
   groundedCheckMargin: 0.25
   engineForce: 0

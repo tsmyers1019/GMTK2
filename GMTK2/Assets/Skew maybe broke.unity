@@ -427,6 +427,16 @@ Prefab:
       propertyPath: turningEngineCutFactor
       value: 0.0095
       objectReference: {fileID: 0}
+    - target: {fileID: 82668970549331636, guid: 6ed095f6e22f0724da7f02cb8be79277,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82668970549331636, guid: 6ed095f6e22f0724da7f02cb8be79277,
+        type: 2}
+      propertyPath: BypassListenerEffects
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ed095f6e22f0724da7f02cb8be79277, type: 2}
   m_IsPrefabAsset: 0
