@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Car : MonoBehaviour {
+public class Car_jumpable : MonoBehaviour {
 
 	// Inspector attributes
-	public float maxEngineForce, maxReverseForce, engineForceDecay, acceleration, brakingMultiplier, turning, turningEngineCutFactor, groundedCheckMargin,airDrag,airAdrag;
-	private float drag_prev, Adrag_prev;
+	public float maxEngineForce, maxReverseForce, engineForceDecay, acceleration, brakingMultiplier, turning, turningEngineCutFactor, groundedCheckMargin;
+	
 
 	// Properties
 	protected Rigidbody rb;
@@ -20,11 +20,6 @@ public class Car : MonoBehaviour {
 
 	private void Start() {
 		rb = GetComponent<Rigidbody>();
-		drag_prev = rb.drag;
-		Adrag_prev = rb.angularDrag;
-
-		airDrag = 0.2f;
-		airAdrag = 0.2f;
 	}
 
 	private void FixedUpdate() {
@@ -40,18 +35,11 @@ public class Car : MonoBehaviour {
 			engineForce = Mathf.Clamp(engineForce, -maxReverseForce, maxEngineForce);
 			rb.AddRelativeForce(Vector3.forward * engineForce);
 
-			rb.drag = drag_prev;
-			rb.angularDrag = Adrag_prev;
 		}
 		
 		engineForce -= engineForce * engineForceDecay;
 		turningForce = 0;
 
-		// tom code
-		if (isGrounded == false) {
-			rb.drag = airDrag;
-			rb.angularDrag = airAdrag;
-		}
 	}
 
 	private void OnCollisionEnter(Collision c) {

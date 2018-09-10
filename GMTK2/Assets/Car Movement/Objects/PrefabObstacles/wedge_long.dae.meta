@@ -1,39 +1,27 @@
 fileFormatVersion: 2
-guid: f9df69e18f945414287a1cc0612eabef
-SketchUpImporter:
-  generateBackFace: 0
-  mergeCoplanarFaces: 0
-  selectedNodes: 0000000001000000
-  assetHash:
-    serializedVersion: 2
-    Hash: aa45ec2016a1c720916fc8d6e5b31744
-  longitude: -105.242139
-  latitude: 40.018309
-  northCorrection: -0
-  fileUnit: 0
-  sketchUpImportData:
-    defaultCamera:
-      position: {x: 292.95197, y: 825.7764, z: -731.38586}
-      lookAt: {x: 276.88257, y: 244.72078, z: -25.045542}
-      up: {x: -0.014447069, y: 0.7723522, z: 0.6350302}
-      fov: 35
-      aspectRatio: 0
-      orthoSize: 1
-      isPerspective: 1
-    scenes: []
+guid: d28ba7084344e42d49acccb6d0a84ddd
+ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: '[Diamond Box]'
+    100000: skp_camera_Last_Saved_SketchUp_View
+    100002: //RootNode
+    400000: skp_camera_Last_Saved_SketchUp_View
+    400002: //RootNode
+    2000000: skp_camera_Last_Saved_SketchUp_View
+    2100000: Geometric_Tile
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Mesh NewTrack1
-  externalObjects: {}
+    4300000: SketchUp
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Geometric_Tile
+    second: {fileID: 2100000, guid: 94178624dce8f4f3a8dc423e49567dfc, type: 2}
   materials:
     importMaterials: 1
-    materialName: 2
-    materialSearch: 0
+    materialName: 0
+    materialSearch: 1
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
@@ -60,12 +48,12 @@ SketchUpImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.0254
+    globalScale: 0.034
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
+    importCameras: 0
     importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
