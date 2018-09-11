@@ -7,7 +7,7 @@ PhysicMaterial:
   m_PrefabInternal: {fileID: 0}
   m_Name: Car
   dynamicFriction: 0.75
-  staticFriction: 0
+  staticFriction: 0.5
   bounciness: 0.25
-  frictionCombine: 1
+  frictionCombine: 2
   bounceCombine: 3
